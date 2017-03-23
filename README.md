@@ -59,7 +59,7 @@ An example `settings.json` file:
 }
 ```
 
-Note that `paranoid`, `slack`, and `twilio` are boolean values and should be set to `true` or `false`. If the file is formatted incorrectly and it cannot be parsed, you will get a `ValueError`, you can use (JSONLint)[http://jsonlint.com/] if you find yourself having issues with this.
+Note that `paranoid`, `slack`, and `twilio` are boolean values and should be set to `true` or `false`. If the file is formatted incorrectly and it cannot be parsed, you will get a `ValueError`, you can use [JSONLint](http://jsonlint.com/) if you find yourself having issues with this.
  
  USB Canary, is sort of smart and can 'detect' if you are running `XScreenSaver` or `gnome-screensaver` on your 
  computer, this is done by just checking which packages are installed via the `apt` library, if both of them are 
@@ -81,13 +81,12 @@ supported, please ensure you add appropriate documentation.
 
 ### Twilio
 To use the Twilio intergration you will need to get an:
-- (Auth Token)[https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-how-to-change-them]
-- (Account SID)[https://support.twilio.com/hc/en-us/articles/223136607-What-is-an-Application-SID-]
+- [Auth Token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-how-to-change-them)
+- [Account SID](https://support.twilio.com/hc/en-us/articles/223136607-What-is-an-Application-SID-)
 - Twilio Mobile Number with SMS support
 
-
 ### Slack
-To use the Slack integration you will need to (setup a bot user)[https://api.slack.com/bot-users]
+To use the Slack integration you will need to [setup a bot user](https://api.slack.com/bot-users)
 
 ## Exit Codes
 
@@ -133,7 +132,7 @@ usb-canary
 ```
 Under the main `canary` directory you will find folders for different services such as Twilio which is named `twilleo` 
 to avoid clashes with the Twilio library. Screensaver support can be found under the `screensaver` directory with each 
-Screen Saver having their own file, just to keep things tidy.
+Screensaver having their own file, just to keep things tidy.
 
 ## Built With
 
