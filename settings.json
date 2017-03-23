@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "slack": {
+      "api_key": "xoxb-111111111111-abcdefghijklmnopqrstuvwx",
+      "channel_name": "usb_canary",
+      "botname": "USB Canary"
+    },
+    "twilio": {
+      "auth_token": "l7cy56u3Nys72vPNRS8TAbaW3X1Ap4ma",
+      "account_sid": "wP32p6qFNzJ25FD1IKM0YtX629eoHbrMiV",
+      "twilio_number": "+61491570156",
+      "mobile_number": "+61491570157"
+    },
+    "general": {
+      "paranoid": true,
+      "screensaver": "xscreensaver",
+      "slack": false,
+      "twilio": true
+    }
+  }
+}
