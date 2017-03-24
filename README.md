@@ -10,6 +10,7 @@ There are a couple of 3rd party libraries to get USB canary running - for some t
 - [slackclient](https://github.com/slackapi/python-slackclient) - A basic client for Slack.com, which can optionally connect to the Slack Real Time Messaging (RTM) API.
 - [twilio](https://github.com/twilio/twilio-python) - A Python module for communicating with the Twilio API and generating TwiML
 - [pyudev](https://github.com/pyudev/pyudev) - Python bindings to libudev (with support for PyQt4, PySide, pygobject and wx)
+- [sander-daemon](https://github.com/serverdensity/python-daemon) - Jejik daemon class improved by Server Density
 
 These can all be installed via `pip`, in some cases you may need to use `pip` with `sudo`. You can install the packages as follows:
 
@@ -17,6 +18,7 @@ These can all be installed via `pip`, in some cases you may need to use `pip` wi
 pip install slackclient
 pip install twilio
 pip install pyudev
+pip install sander-daemon
 ```
 
 Otherwise you can just run `pip install -r requirements.txt`
@@ -61,23 +63,23 @@ An example `settings.json` file:
 
 Note that `paranoid`, `slack`, and `twilio` are boolean values and should be set to `true` or `false`. If the file is formatted incorrectly and it cannot be parsed, you will get a `ValueError`, you can use [JSONLint](http://jsonlint.com/) if you find yourself having issues with this.
  
- USB Canary, is sort of smart and can 'detect' if you are running `XScreenSaver` or `gnome-screensaver` on your 
- computer, this is done by just checking which packages are installed via the `apt` library, if both of them are 
- installed though, it will leave you to determine which one you are using - if you have an unsupported 
- screensaver, don't fret, you can still run it in paranoid mode.
+USB Canary, is sort of smart and can 'detect' if you are running `XScreenSaver` or `gnome-screensaver` on your 
+computer, this is done by just checking which packages are installed via the `apt` library, if both of them are 
+installed though, it will leave you to determine which one you are using - if you have an unsupported 
+screensaver, don't fret, you can still run it in paranoid mode.
  
- Paranoid mode is also suitable for people who want to monitor if their servers have had USB's plugged into them, 
- although I haven't tested them on Linode, Amazon Web Services, or Digital Ocean it is suitable for those with 
- physical servers that may need this sort of monitoring.
+Paranoid mode is also suitable for people who want to monitor if their servers have had USB's plugged into them, 
+although I haven't tested them on Linode, Amazon Web Services, or Digital Ocean it is suitable for those with 
+physical servers that may need this sort of monitoring.
  
- To start the application:
- ```shell
+To start the application:
+```shell
 ./usb_canary.py start | stop | restart
 ```
 
 ## Deployment
 The following will outline the basic steps to deploying USB Canary to Slack and Twilio. As extra services are 
-supported, please ensure you add appropriate documentation.
+added, please ensure you add appropriate documentation with your PR.
 
 ### Twilio
 To use the Twilio intergration you will need to get an:
@@ -107,9 +109,6 @@ usb-canary
 ├──LICENSE.txt
 ├──settings.json
 ├──canary
-│   ├──daemon
-│   │   ├──__init__.py
-│   │   └──daemon.py
 │   ├──slack
 │   │   ├──slack.py
 │   │   ├──slack_bot.py
@@ -128,6 +127,8 @@ usb-canary
 │       └──__init__.py
 ├──README.md <---------------------------------- YOU ARE HERE
 ├──requirements.txt
+├──ISSUE_TEMPLATE.md
+├──PULL_REQUEST_TEMPLATE.md
 └──usb_canary.py 
 ```
 Under the main `canary` directory you will find folders for different services such as Twilio which is named `twilleo` 
@@ -141,14 +142,11 @@ Screensaver having their own file, just to keep things tidy.
 - [slackclient](https://github.com/slackapi/python-slackclient) - A basic client for Slack.com, which can optionally connect to the Slack Real Time Messaging (RTM) API.
 - [twilio](https://github.com/twilio/twilio-python) - A Python module for communicating with the Twilio API and generating TwiML
 - [python-apt](https://apt.alioth.debian.org/python-apt-doc/library/index.html) - A library that provides access to almost every functionality supported by the underlying apt-pkg and apt-inst libraries
+- [sander-daemon](https://github.com/serverdensity/python-daemon) - Jejik daemon class improved by Server Density
 
 ## Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request
+See the [CONTRIBUTING.md](CONTRIBUTING.md) file for details.
 
 ## Versioning
 
@@ -167,4 +165,4 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE.txt](LIC
 
 ## Acknowledgements
 
-- Sander Marechal - I don't know who you are, but you made damonizing this so much easier!
+- [timball](https://github.com/timball) - for recommending `sander-daemon`
