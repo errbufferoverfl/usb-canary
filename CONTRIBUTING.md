@@ -4,7 +4,7 @@ First off, thank you for considering contributing to USB Canary.
 
 ### 1. Where do I go from here?
 
-If you've noticed a bug or have a question [search the issue tracker](https://github.com/probablynotablog/usb-canary/issues?q=something)
+If you've noticed a bug or have a question [search the issue tracker](https://github.com/probablynotablog/usb-canary/issues)
 to see if someone else in the community has already created a ticket. If not, go ahead and [make one](https://github.com/probablynotablog/usb-canary/issues/new)!
 
 ### 2. Fork & create a branch
@@ -25,15 +25,15 @@ git checkout -b 325-add-windows-support
 * If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/probablynotablog/usb-canary/issues/new). 
 Be sure to include a **title and clear description**, as much relevant information as possible - use the relevant bug report templates to create the issue. 
 
-### 5. Implement your fix or feature
+### 4. Implement your fix or feature
 
 At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first.
 
-### 6. Test your changes
+### 5. Test your changes
 
-We don't currently have an automated test suite, so it's up to you to test your bug fix or feature to ensure it does not impact exsisting features, unless that feature was really a bug and you're fixing it. If you're unable to test your new feature, reach out to one of the maintainers who will be happy to help. (It may take longer to be accepted)
+We don't currently have an automated test suite, so it's up to you to test your bug fix or feature to ensure it does not impact existing features, unless that feature was really a bug and you're fixing it. If you're unable to test your new feature, reach out to one of the maintainers who will be happy to help. (It may take longer to be accepted)
 
-### 7. Make a Pull Request
+### 6. Make a Pull Request
 
 At this point, you should switch back to your master branch and make sure it's
 up to date with USB Canary's master branch.
@@ -41,5 +41,3 @@ up to date with USB Canary's master branch.
 Push it!
 
 Finally, go to GitHub and [make a Pull Request](https://help.github.com/articles/creating-a-pull-request).
-
-
