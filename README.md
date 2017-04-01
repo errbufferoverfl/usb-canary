@@ -1,9 +1,21 @@
 # USB Canary
 USB Canary is a Linux tool that uses pyudev to monitor USB devices either around the clock, or just while it's locked. It can be configured to send you an SMS via the Twilio API, or notify a Slack channel with it's inbuilt Slack bot. 
 
+## About the Project
+USB Canary was a personal project started while between jobs after looking for a tool to monitor USB ports on my Linux computers while they were unattended, while there are many great tools already out there many require the user to login before they are notified - while many people would also argue to just turn USB ports off at a hardware level or fill them with epoxy, I still need my USB ports for keyboards and mice etc.
+
+It was recently featured on [Bleeping Computer](https://www.bleepingcomputer.com/news/software/usb-canary-sends-an-sms-when-someone-tinkers-with-your-usb-ports/) and appreciate feedback and support received from the community.
+
+I am currently looking into an OSX and Windows versions, the exact details of these versions are still uncertain as I work out of the details of particular functions in their respective operating systems.
+
+### Why are you using 3rd party libraries?
+A few people online have disagreed with the usage of third-party libraries and the reliance on a programming language such as Python to reliably monitor USB devices. The decision to create USB Canary in Python was a personal choice, this was originally a personal project I had kicking around at the start of the year that I decided to release to the wider community so someone might get a kick out of it.
+
+The usage of third-party libraries specifically `pyudev` meant that in the long term I had a code base that was easy to maintain and update for myself and didn't need to make kernel level calls and parse that information reliably.
+
 ## Getting Started
 
-There are a couple of 3rd party libraries to get USB canary running - for some this may seem like a bad idea, but it's better than recreating the wheel or rolling your own crypto. Below we will go through the 3rd party libraries, so those who are so inclined can check them out before installing.
+There are a couple of 3rd party libraries to get USB Canary running. Below we will go through the 3rd party libraries, so those who are so inclined can check them out before installing.
 
 ### Prerequisites
 
@@ -146,7 +158,7 @@ Screensaver having their own file, just to keep things tidy.
 
 ## Contributing
 
-See the [CONTRIBUTING.md](CONTRIBUTING.md) file for details.
+See the [CONTRIBUTING](CONTRIBUTING.md) file for details.
 
 ## Versioning
 
