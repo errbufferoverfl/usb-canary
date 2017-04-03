@@ -6,8 +6,8 @@ import canary.slack.slack_bot
 
 def load_slack_settings():
     """
-    Opens settings.json and checks all values have been set, 
-    if they have, creates a list containing these details 
+    Opens settings.json and checks all values have been set,
+    if they have, creates a list containing these details
     and sets up Slack bot.
 
     If not exits and notifies user of misconfiguration
@@ -28,5 +28,3 @@ def load_slack_settings():
     canary.slack.slack_bot.setup(slack, channel_name)
 
     return slack
-
-    

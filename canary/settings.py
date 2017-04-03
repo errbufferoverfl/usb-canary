@@ -28,7 +28,6 @@ def open_settings():
         print "No JSON object could be decoded"
 
 
-
 def check_paranoid_set(paranoid_option):
     paranoid_set_true = paranoid_option is True
     paranoid_set_false = paranoid_option is False
