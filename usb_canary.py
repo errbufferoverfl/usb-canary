@@ -36,6 +36,7 @@ from canary.daemon.daemon import Daemon
 twilio_settings = None
 slack_settings = None
 
+
 class Usb_Canary(Daemon):
     def run(self):
         while True:
@@ -62,7 +63,6 @@ class Usb_Canary(Daemon):
             self.monitor(paranoid_setting, screensaver_setting)
         except AttributeError:
             print "Unable to start application, mode or screensaver have not been set properly"
-
 
     def monitor(self, paranoid, screensaver):
         operating_system = platform.system()
@@ -102,7 +102,6 @@ class Usb_Canary(Daemon):
             else:
                 sys.exit(126)
 
-
     def initialise_pyudev(self):
         context = pyudev.Context()
 
@@ -110,7 +109,6 @@ class Usb_Canary(Daemon):
         monitor.filter_by(subsystem='usb', device_type='usb_device')
 
         return monitor, context
-
 
     def set_device_event(self, device):
         time.ctime()
