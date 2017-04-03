@@ -27,8 +27,7 @@ def run_bot(message, channel):
             message = "Hi! :wave: It looks like some of my settings might be a little frazzled, and I can't post " \
                   "messages like normal."
             slack_client.api_call("chat.postMessage", channel='general', text=message, as_user=True)
-
-
     else:
         print("Connection failed. Invalid Slack token or bot ID?")
         sys.exit(465564)
+

@@ -11,7 +11,7 @@ def send_message(alert):
     twilio_enabled = settings_file['settings']['general']['twilio']
     slack_enabled = settings_file['settings']['general']['slack']
 
-    if twilio_enabled == True:
+    if twilio_enabled:
         twilio_settings = settings_file['settings']['twilio']
 
         client = TwilioRestClient(twilio_settings["account_sid"], twilio_settings["auth_token"])
@@ -22,6 +22,6 @@ def send_message(alert):
         except TwilioRestException as e:
             print(e)
 
-    if slack_enabled == True:
+    if slack_enabled:
         slack_settings = settings_file['settings']['slack']
         slack_bot.run_bot(alert, slack_settings['channel_name'])
