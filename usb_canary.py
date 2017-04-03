@@ -36,6 +36,7 @@ from canary.daemon.daemon import Daemon
 twilio_settings = None
 slack_settings = None
 
+
 class Usb_Canary(Daemon):
     def run(self):
         while True:
@@ -138,4 +139,3 @@ if __name__ == '__main__':
     else:
         print "usage: %s start|stop|restart" % sys.argv[0]
         sys.exit(2)
-

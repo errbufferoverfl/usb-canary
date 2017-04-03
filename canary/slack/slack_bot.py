@@ -11,6 +11,7 @@ def setup(slack, channel):
     global channel_name
     channel_name = channel
 
+
 def run_bot(message, channel):
     if slack_client.rtm_connect():
         channel_list = slack_client.api_call('channels.list')['channels']
@@ -30,4 +31,3 @@ def run_bot(message, channel):
     else:
         print("Connection failed. Invalid Slack token or bot ID?")
         sys.exit(465564)
-
