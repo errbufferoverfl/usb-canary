@@ -17,6 +17,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
+from __future__ import absolute_import, division, print_function
 import os
 import platform
 import socket
@@ -62,12 +63,12 @@ class Usb_Canary(Daemon):
         try:
             self.monitor(paranoid_setting, screensaver_setting)
         except AttributeError:
-            print "Unable to start application, mode or screensaver have not been set properly"
+            print("Unable to start application, mode or screensaver have not been set properly")
 
     def monitor(self, paranoid, screensaver):
-        operating_system = platform.system()
+        operating_system = platform.system().lower()
 
-        if operating_system.lower() in settings.get_supported_operating_systems():
+        if operating_system in settings.get_supported_operating_systems():
             monitor, context = self.initialise_pyudev()
             if screensaver == 'xscreensaver':
                 screensaver_monitor = os.popen('xscreensaver-command -watch')
@@ -111,31 +112,27 @@ class Usb_Canary(Daemon):
         return monitor, context
 
     def set_device_event(self, device):
-        time.ctime()
+        time.ctime()  # TODO: Do we need this line?
         if device.action == 'remove':
-            alert = '{0} - {1} reported a USB was {2.action}d from node {2.device_node}'.format(
-                time.strftime('%l:%M%p %Z on %b %d, %Y'), socket.gethostname(), device)
+            fmt = '{0} - {1} reported a USB was {2.action}d from node {2.device_node}'
         else:
-            alert = '{0} - {1} reported a USB was {2.action}ed to node {2.device_node}'.format(
-                time.strftime('%l:%M%p %Z on %b %d, %Y'), socket.gethostname(), device)
-
-        print alert
+            fmt = '{0} - {1} reported a USB was {2.action}ed to node {2.device_node}'
+        alert = fmt.format(time.strftime('%l:%M%p %Z on %b %d, %Y'), socket.gethostname(), device)
+        print(alert)
         message_handler.send_message(alert)
 
 
 if __name__ == '__main__':
     daemon = Usb_Canary('/tmp/usbcanary.pid')
-    if len(sys.argv) == 2:
-        if 'start' == sys.argv[1]:
-            daemon.start()
-        elif 'stop' == sys.argv[1]:
-            daemon.stop()
-        elif 'restart' == sys.argv[1]:
-            daemon.restart()
-        else:
-            print "Unknown command"
-            sys.exit(2)
-        sys.exit(0)
+    try:
+        func = {'start': daemon.start,
+                'stop': daemon.stop,
+                'restart': daemon.restart}.get(sys.argv[1].lower())
+    except IndexError:
+        print("usage: %s start|stop|restart" % sys.argv[0])
+        sys.exit(2)
+    if func:
+        sys.exit(func())
     else:
-        print "usage: %s start|stop|restart" % sys.argv[0]
+        print("Unknown command")
         sys.exit(2)

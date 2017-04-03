@@ -1,9 +1,9 @@
+from __future__ import absolute_import, division, print_function
 import apt
-
 import sys
 import canary.settings
 
-supported_screensavers = ['gnome-screensaver', 'xscreensaver']
+supported_screensavers = ('gnome-screensaver', 'xscreensaver')
 
 
 def set_screensaver(screensaver_option):
@@ -20,7 +20,7 @@ def set_screensaver(screensaver_option):
         if screensaver_option in supported_screensavers:
             save_screensaver(screensaver_option)
         else:
-            print
+            print('')
             sys.exit(126)
     return screensaver_option
 
@@ -32,29 +32,25 @@ def save_screensaver(screensaver):
     :return:
     """
     settings = canary.settings.open_settings()
-
-    if settings['settings']['general']['screensaver']:
-        print "Writing over screensaver value {}".format(settings['settings']['general']['screensaver'])
-        settings['settings']['general']['screensaver'] = screensaver
-        canary.settings.save_settings(settings)
-    else:
-        settings['settings']['general']['screensaver'] = screensaver
-        canary.settings.save_settings(settings)
+    general_settings = settings['settings']['general']
+    if general_settings['screensaver']:
+        print("Writing over screensaver value {}".format(general_settings['screensaver']))
+    general_settings['screensaver'] = screensaver
+    canary.settings.save_settings(settings)
 
 
 def identify_screensaver():
     cache = apt.Cache()
-
-    if cache['xscreensaver'].is_installed and cache['gnome-screensaver'].is_installed:
-        print "XScreenSaver and gnome-screensaver detected. Please select active screensaver in the settings file " \
-              "before proceeding."
-        sys.exit(125)
-    if cache['xscreensaver'].is_installed:
-        return 'xscreensaver'
-    elif cache['gnome-screensaver'].is_installed:
-        return 'gnome-screensaver'
-    else:
+    installed_screensavers = [ss for ss in supported_screensavers
+                              if cache[ss].is_installed]
+    if not installed_screensavers:
         sys.exit(126)
+    elif len(installed_screensavers) == 1:
+        return installed_screensavers[0]
+    else:
+        print("XScreenSaver and gnome-screensaver detected. Please select "
+              "active screensaver in the settings file before proceeding.")
+        sys.exit(125)
 
 
 def get_supported_screensavers():

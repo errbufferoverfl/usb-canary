@@ -152,7 +152,7 @@ Screensaver having their own file, just to keep things tidy.
 
 ## Built With
 
-- [Python 2.7](https://www.python.org/download/releases/2.7/) - The one that is installed on most operating systems by default
+- [Python 2.7](https://www.python.org/download/releases/2.7/) - The one that is installed on most operating systems by default  (Preliminary support for Python 3 has recently been added)
 - [pyudev](https://pyudev.readthedocs.io/en/latest/) - A pure python binding to libudev, the device and hardware management and information library of Linux
 - [slackclient](https://github.com/slackapi/python-slackclient) - A basic client for Slack.com, which can optionally connect to the Slack Real Time Messaging (RTM) API.
 - [twilio](https://github.com/twilio/twilio-python) - A Python module for communicating with the Twilio API and generating TwiML

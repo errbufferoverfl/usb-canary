@@ -1,9 +1,8 @@
 # coding=utf-8
+from __future__ import absolute_import, division, print_function
 import json
 import os
-
 import sys
-
 import time
 
 supported_operating_systems = ['linux']
@@ -11,21 +10,18 @@ file_path = os.path.dirname(__file__) + '/../settings.json'
 
 
 def save_settings(options):
-    json.dump(options, open(file_path, 'w'))
+    with open(file_path, 'w') as settings_file:
+        json.dump(options, settings_file)
 
 
 def open_settings():
     try:
         with open(file_path, 'r') as settings_file:
-
-            settings = json.load(settings_file)
-            settings_file.close()
-
-            return settings
+            return json.load(settings_file)
     except IOError:
-        print "File {} not found".format(file_path)
+        print("File {} not found".format(file_path))
     except ValueError:
-        print "No JSON object could be decoded"
+        print("No JSON object could be decoded")
 
 
 def check_paranoid_set(paranoid_option):
@@ -51,4 +47,4 @@ def get_supported_operating_systems():
 
 def print_message(message):
     time.ctime()
-    print '{} - {}'.format(time.strftime('%l:%M%p %Z on %b %d, %Y'), message)
+    print('{} - {}'.format(time.strftime('%l:%M%p %Z on %b %d, %Y'), message))
