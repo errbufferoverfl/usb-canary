@@ -181,3 +181,4 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE.txt](LIC
 ## Acknowledgements
 
 - [timball](https://github.com/timball) - for recommending `sander-daemon`
+- [cclauss](https://github.com/cclauss) - for intergrating Travis CI
