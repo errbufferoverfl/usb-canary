@@ -1,4 +1,7 @@
 # USB Canary
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://travis-ci.org/probablynotablog/usb-canary.svg?branch=master)](https://travis-ci.org/probablynotablog/usb-canary)
+
 USB Canary is a Linux tool that uses pyudev to monitor USB devices either around the clock, or just while it's locked. It can be configured to send you an SMS via the Twilio API, or notify a Slack channel with it's inbuilt Slack bot. 
 
 ## About the Project
