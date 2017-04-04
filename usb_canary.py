@@ -25,6 +25,7 @@ import sys
 import time
 
 import pyudev
+from daemon import Daemon
 
 from canary import message_handler
 from canary import settings
@@ -32,7 +33,6 @@ from canary.message_handler import send_message
 from canary.screensaver import helpers
 from canary.slack import slack
 from canary.twilleo import twilleo
-from canary.daemon.daemon import Daemon
 
 twilio_settings = None
 slack_settings = None
