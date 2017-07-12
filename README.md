@@ -9,7 +9,7 @@ USB Canary was a personal project started while between jobs after looking for a
 
 It was recently featured on [Bleeping Computer](https://www.bleepingcomputer.com/news/software/usb-canary-sends-an-sms-when-someone-tinkers-with-your-usb-ports/) and appreciate feedback and support received from the community.
 
-I am currently looking into an OSX and Windows versions, the exact details of these versions are still uncertain as I work out of the details of particular functions in their respective operating systems.
+I am currently looking into an OSX ~~and Windows~~ version, the exact details of this version is still uncertain as I work out of the details of particular functions in their respective operating systems.
 
 ### Why are you using 3rd party libraries?
 A few people online have disagreed with the usage of third-party libraries and the reliance on a programming language such as Python to reliably monitor USB devices. The decision to create USB Canary in Python was a personal choice, this was originally a personal project I had kicking around at the start of the year that I decided to release to the wider community so someone might get a kick out of it.
