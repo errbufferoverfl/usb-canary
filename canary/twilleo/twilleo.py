@@ -1,5 +1,20 @@
-from __future__ import absolute_import, division, print_function
+# usb_canary - a Linux tool that uses pyudev to monitor devices while
+# your computer is locked. In the case it detects someone plugging in
+# or unplugging devices it can be configured to make a noise or send
+# you an SMS alerting to you of the potential security breach.
+
+# Copyright (C) 2017 errbufferoverfl
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 import sys
+
 import canary.settings
 
 
@@ -18,19 +33,19 @@ def load_twilio_settings():
     try:
         # sanity check that the user has actually supplied data
         if not twilio['account_sid']:
-            print('Error 40: Twilio Account SID has been left blank')
-            sys.exit(40)
+            print('Twilio Account SID has been left blank')
+            sys.exit(407)
         elif not twilio['auth_token']:
-            print('Error 41: Twilio API token has been left blank')
-            sys.exit(41)
+            print('Twilio API token has been left blank')
+            sys.exit(408)
         elif not twilio['mobile_number']:
-            print('Error 42: Receiving mobile number has been left blank')
-            sys.exit(42)
+            print('Receiving mobile number has been left blank')
+            sys.exit(409)
         elif not twilio['twilio_number']:
-            print('Error 43: Twilio mobile number has been left blank')
-            sys.exit(43)
+            print('Twilio mobile number has been left blank')
+            sys.exit(410)
         else:
             return twilio
     except KeyError:
-        print('Error 50: Twilio key missing in the settings file')
-        sys.exit(50)
+        print('Twilio key missing in the settings file')
+        sys.exit(411)

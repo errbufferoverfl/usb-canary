@@ -14,6 +14,18 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-"""
-xscreensaver management helper function should go here
-"""
+import logging
+import os
+
+
+def is_active():
+    logging.debug('Opening gnome-screensaver-command -q.')
+    logging.debug('gnome-screensaver-command -q.')
+    screensaver_monitor = os.popen('gnome-screensaver-command -q')
+    line = screensaver_monitor.readline()
+    logging.debug('{}'.format(line))
+
+    logging.debug('Checking if screensaver is currently active.')
+    if 'is active' in line:
+        logging.debug('Screensaver is active.')
+        return True

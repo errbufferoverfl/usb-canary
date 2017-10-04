@@ -1,4 +1,4 @@
-slackclient
-twilio
-pyudev
-sander-daemon
+psutil==5.3.1
+sander-daemon==1.0.0
+slackclient==1.0.9
+twilio==5.7.0
