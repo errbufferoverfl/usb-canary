@@ -58,7 +58,7 @@ come with the install but just double check to make sure it's there.
 
 OSX users will need to install [Xcode](https://developer.apple.com/downloads/?name=Xcode) first then:
 ```
-pip install psutil
+pip install psutil==5.3.1
 ```
 
 OSX users will also need to manually install the [Quartz](https://pypi.python.org/pypi/pyobjc-framework-Quartz)
@@ -72,9 +72,10 @@ packages can all be installed via `pip`, in some cases you may need to
 use `pip` with `sudo`. You can install the packages as follows:
 
 ```
-pip install slackclient
-pip install twilio
-pip install psutil
+pip install slackclient==1.0.9
+pip install twilio==5.7.0
+pip install psutil==5.3.1
+pip install sander-daemon==1.0.0
 ```
 
 ### Installing
