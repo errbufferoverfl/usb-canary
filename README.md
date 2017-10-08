@@ -7,6 +7,9 @@ either around the clock, or just while your computer is locked. It can
 be configured to send you an SMS via the Twilio API, notify a Slack
 channel with it's inbuilt Slack bot, or send a push message through Pushover.
 
+**Disclaimer**: Under no circumstances should USB Canary be used for production, production-like 
+systems or critical infrastructure.
+
 ## Getting Started
 
 There are a couple of 3rd party libraries to get USB Canary running - so
