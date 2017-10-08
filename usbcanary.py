@@ -29,6 +29,8 @@ from canary.screensaver import helpers
 
 twilio_settings = None
 slack_settings = None
+pushover_settings = None
+
 file_path = os.path.dirname(__file__)
 
 

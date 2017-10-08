@@ -25,6 +25,9 @@ from canary.slack import slack_bot
 from canary.slack.slack import load_slack_settings
 from canary.twilleo.twilleo import load_twilio_settings
 
+from canary.pushovr.pushover import load_pushover_settings
+from pushover import Client
+
 
 def send_message(alert):
     logging.debug('Opening settings.json.')
@@ -33,6 +36,8 @@ def send_message(alert):
     twilio_enabled = settings_file['settings']['general']['twilio']
     logging.debug('Getting Slack settings.')
     slack_enabled = settings_file['settings']['general']['slack']
+    logging.debug('Getting Pushover settings.')
+    pushover_enabled = settings_file['settings']['general']['pushover']
 
     logging.debug('Checking if Twilio is enabled.')
     if twilio_enabled:
@@ -56,3 +61,9 @@ def send_message(alert):
         slack_settings = load_slack_settings()
         logging.debug('Staring up Slack Bot.')
         slack_bot.run_bot(alert, slack_settings['channel_name'])
+    logging.debug('Checking if Pushover is enabled.')
+    if pushover_enabled:
+        logging.debug('Opening settings.json.')
+        pushover_settings = load_pushover_settings()
+        client = Client(pushover_settings['user_key'], api_token=pushover_settings['api_token'])
+        client.send_message(alert, priority=pushover_settings['priority'])

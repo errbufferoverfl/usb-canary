@@ -4,8 +4,8 @@
 
 USB Canary is a Linux and OSX tool that uses psutil to monitor USB devices
 either around the clock, or just while your computer is locked. It can
-be configured to send you an SMS via the Twilio API, or notify a Slack
-channel with it's inbuilt Slack bot.
+be configured to send you an SMS via the Twilio API, notify a Slack
+channel with it's inbuilt Slack bot, or send a push message through Pushover.
 
 ## Getting Started
 
@@ -19,6 +19,7 @@ basic client for Slack.com, which can optionally connect to the Slack
 Real Time Messaging (RTM) API.
 - [twilio](https://github.com/twilio/twilio-python) - A Python module
 for communicating with the Twilio API and generating TwiML.
+- [pushover](https://github.com/Thibauth/python-pushover) - Comprehensive bindings and command line utility for the Pushover notification service
 - [psutil](https://pypi.python.org/pypi/psutil) - Cross-platform lib
 for process and system monitoring in Python.
 - [gcc](https://gcc.gnu.org/) - GNU Compiler Collection
@@ -74,6 +75,7 @@ use `pip` with `sudo`. You can install the packages as follows:
 ```
 pip install slackclient==1.0.9
 pip install twilio==5.7.0
+pip install python-pushover==0.3
 pip install psutil==5.3.1
 pip install sander-daemon==1.0.0
 ```
@@ -100,11 +102,17 @@ An example `settings.json` file:
       "twilio_number": "+61491570156",
       "mobile_number": "+61491570157"
     },
+    "pushover": {
+      "priority": 1,
+      "user_key": "youruserkeygoeshere",
+      "api_token": "yourapitokengoeshere"
+    },
     "general": {
       "paranoid": true,
       "screensaver": "xscreensaver",
       "slack": false,
       "twilio": true,
+      "pushover": false,
     }
   }
 }
@@ -124,13 +132,13 @@ just checking which packages are installed via the `apt` library, if
 both of them are installed though, it will leave you to determine which
 one you are using - if you have an unsupported screensaver, don't fret,
 you can still run it in paranoid mode.
- 
+
 Paranoid mode is also suitable for people who want to monitor if their
 servers have had USB's plugged into them,
 although I haven't tested them on Linode, Amazon Web Services, or
 Digital Ocean it is suitable for those with
 physical servers that may need this sort of monitoring.
- 
+
 To start the application:
 ```shell
 # Linux users
@@ -159,6 +167,10 @@ To use the Twilio integration you will need to get an:
 
 To use the Slack integration you will need to [setup a bot user](https://api.slack.com/bot-users)
 
+### Pushover
+
+To use Pushover API for sending push messages to your devices, you need to create an [account and application](https://pushover.net/faq#overview-what)
+
 ## Exit Codes
 
 | Exit Code | Reason | Solution |
@@ -176,6 +188,10 @@ To use the Slack integration you will need to [setup a bot user](https://api.sla
 | 409 | Receiving mobile # is blank  | Twilio receiving mobile number has not been set, check `settings.json` |
 | 410 | Twilio mobile # is blank | Twilio allocated mobile number has not been set, check `settings.json` |
 | 411 | Twilio key missing in settings.json | Twilio JSON block is not in settings file, check `settings.json` |
+| 412 | Pushover user key missing in settings.json | Pushover user key (per account) is missing, check `settings.json` |
+| 413 | Pushover user key missing in settings.json | Pushover api key (per registered app) is missing, check `settings.json` |
+| 414 | Pushover priority level missing in settings.json | Pushover priority level is missing, check `settings.json` |
+| 415 | Pushover key missing in settings.json | Pushover JSON block is not in settings file, check `settings.json` |
 | 501 | `settings.json` file missing. | Download setting.json from Github |
 | 502 | Unable to parse settings.json | Check for erroneous symbols, use [JSONLint](http://jsonlint.com/) to check formatting |
 | 503 | Paranoid option not set correctly. | Paranoid option not set, or set incorrectly |

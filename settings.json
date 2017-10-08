@@ -11,11 +11,17 @@
       "twilio_number": "+61491570156",
       "mobile_number": "+61491570157"
     },
+    "pushover": {
+      "priority": 1,
+      "user_key": "youruserkeygoeshere",
+      "api_token": "yourapitokengoeshere"
+    },
     "general": {
       "paranoid": true,
       "screensaver": "xscreensaver",
       "slack": false,
-      "twilio": true
+      "twilio": true,
+      "pushover": false,
     }
   }
 }
