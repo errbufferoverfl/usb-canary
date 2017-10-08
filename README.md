@@ -233,3 +233,4 @@ This project is licensed under the GNU GPLv3 License - see the
 
 - [timball](https://github.com/timball) - for recommending `sander-daemon`
 - [cclauss](https://github.com/cclauss) - for integrating Travis CI
+- [helpsterTee](https://github.com/helpsterTee) - for adding Pushover support
