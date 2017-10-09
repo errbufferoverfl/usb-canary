@@ -42,7 +42,7 @@ class UsbCanary(Daemon):
     def main(self):
         options = settings.open_settings()['settings']['general']
 
-        if settings.check_paranoid_setting(options['paranoid']) == 'True':
+        if settings.check_paranoid_setting(options['paranoid']) is True:
             paranoid_enabled = True
         else:
             paranoid_enabled = False
