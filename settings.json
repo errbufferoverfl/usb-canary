@@ -21,7 +21,7 @@
       "screensaver": "xscreensaver",
       "slack": false,
       "twilio": true,
-      "pushover": false,
+      "pushover": false
     }
   }
 }
